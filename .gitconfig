@@ -11,4 +11,5 @@
 	s  = status
 	co = checkout
 	branches = for-each-ref --sort=-committerdate refs/heads/
+	tags = show-ref --tags
 	up = "!git remote update -p; git merge --ff-only @{u}"
