@@ -2,13 +2,11 @@
 	email = github@simongrondin.name
 	name = SGrondin
 
-[push]
-        default = simple
-
 [alias]
 	ll = log --graph --oneline
 	lp = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 	s  = status
+	a = add --all .
 	co = checkout
 	branches = for-each-ref --sort=-committerdate refs/heads/
 	tags = show-ref --tags
