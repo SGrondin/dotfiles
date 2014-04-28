@@ -1,6 +1,8 @@
 [user]
 	email = github@simongrondin.name
 	name = SGrondin
+[push]
+        default = simple
 
 [alias]
 	ll = log --graph --oneline
