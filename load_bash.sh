@@ -12,5 +12,5 @@ fi
 
 hasBanIP=$(grep "^banIP()" ~/.bashrc | wc -l)
 if [[ $hasBanIP == 0 ]]; then
-        echo "banIP() { iptables -I INPUT -s $1 -j DROP; }"  >> ~/.bashrc
+        echo "banIP() { sudo iptables -I INPUT -s \$1 -j DROP; }"  >> ~/.bashrc
 fi
