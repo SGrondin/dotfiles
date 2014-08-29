@@ -2,10 +2,12 @@
 
 if (( $( grep "^alias ports" ~/.bashrc | wc -l ) ==0 )); then
         echo "alias ports='sudo netstat -tplun'" >> ~/.bashrc
+        echo "Loaded ports"
 fi
 
 if (( $( grep "^alias ll" ~/.bashrc | wc -l ) == 0 )); then
         echo "alias ll='ls -lahF'"  >> ~/.bashrc
+        echo "Loaded ll"
 fi
 
 
@@ -19,6 +21,7 @@ if (( $( grep "^saveIPTABLES()" ~/.bashrc | wc -l ) == 0 )); then
         echo \"Saving iptables configuration to /etc/iptables/rules.v4\"
         sleep 1
         sudo iptables-save | sudo tee /etc/iptables/rules.v4; }" >> ~/.bashrc
+    echo "Loaded saveIPTABLES"
 fi
 
 if (( $( grep "^loadIPTABLES()" ~/.bashrc | wc -l ) == 0 )); then
@@ -29,18 +32,21 @@ if (( $( grep "^loadIPTABLES()" ~/.bashrc | wc -l ) == 0 )); then
         else
             echo \"/etc/iptables/rules.v4\"
         fi }" >> ~/.bashrc
+    echo "Loaded loadIPTABLES"
 fi
 
 if (( $( grep "^banIP()" ~/.bashrc | wc -l ) == 0 )); then
         echo "banIP() {
             sudo iptables -I INPUT -s \$1 -j DROP;
             saveIPTABLES; }"  >> ~/.bashrc
+        echo "Loaded saveIPTABLES"
 fi
 
 if (( $( grep "^forwardPORT()" ~/.bashrc | wc -l ) == 0 )); then
         echo "forwardPORT() {
             sudo iptables -t nat -A OUTPUT -p tcp --dport \$1 -j DNAT --to-destination \$2:\$3 ;
             saveIPTABLES; }"  >> ~/.bashrc
+        echo "Loaded forwardPORT"
 fi
 
 if (( $( grep "^bridgePORT()" ~/.bashrc | wc -l ) == 0 )); then
@@ -64,5 +70,18 @@ if (( $( grep "^bridgePORT()" ~/.bashrc | wc -l ) == 0 )); then
     fi
 
     saveIPTABLES; }" >> ~/.bashrc
+    echo "Loaded bridgePORT"
 fi
 
+if (( $( grep "^upload()" ~/.bashrc | wc -l ) == 0 )); then
+    echo "upload() {
+    CODE=\$(curl -I http://simongrondin.name/files/\$1 | head -n 1)
+    if (( \$( echo \$CODE | grep 200 | wc -l ) == 1 )); then
+        echo \$CODE;
+        echo \"Already exists\"
+        return 1;
+    fi
+    scp -P 22022 \$1 hyssar@govpop.com:/var/www/simongrondin/files/\$1;
+    echo \"http://simongrondin.name/files/\"\$1; }" >> ~/.bashrc
+    echo "Loaded upload"
+fi
