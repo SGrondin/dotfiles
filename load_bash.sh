@@ -85,3 +85,9 @@ if (( $( grep "^upload()" ~/.bashrc | wc -l ) == 0 )); then
     echo \"http://simongrondin.name/files/\"\$1; }" >> ~/.bashrc
     echo "Loaded upload"
 fi
+
+if (( $( grep "^moshSERVER()" ~/.bashrc | wc -l ) == 0 )); then
+    echo "moshSERVER() {
+        mosh --ssh=\"ssh -p 22022\" hyssar@govpop.com
+    }" >> ~/.bashrc
+fi
