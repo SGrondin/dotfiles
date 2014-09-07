@@ -91,3 +91,19 @@ if (( $( grep "^moshSERVER()" ~/.bashrc | wc -l ) == 0 )); then
         mosh --ssh=\"ssh -p 22022\" hyssar@govpop.com
     }" >> ~/.bashrc
 fi
+
+if (( $( grep "^oclean()" ~/.bashrc | wc -l ) == 0 )); then
+    echo "oclean() {
+        rm *.cmi *.cmx *.o
+    }" >> ~/.bashrc
+fi
+
+if (( $( grep "^mtime()" ~/.bashrc | wc -l ) == 0 )); then
+    echo "mtime() {
+        NBRUNS=\$1
+        shift
+        time for (( i=0; i<\$NBRUNS; i++ )) do
+            \"\$@\"
+        done
+    }" >> ~/.bashrc
+fi
