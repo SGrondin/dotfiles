@@ -10,6 +10,11 @@ if (( $( grep "^alias ll" ~/.bashrc | wc -l ) == 0 )); then
         echo "Loaded ll"
 fi
 
+if (( $( grep "^alias please" ~/.bashrc | wc -l ) == 0 )); then
+        echo "alias please='sudo \$(fc -nl -1)'"  >> ~/.bashrc
+        echo "Loaded please"
+fi
+
 
 if (( $( grep "^saveIPTABLES()" ~/.bashrc | wc -l ) == 0 )); then
     echo "saveIPTABLES() {
