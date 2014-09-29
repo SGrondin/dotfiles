@@ -95,12 +95,14 @@ if (( $( grep "^moshSERVER()" ~/.bashrc | wc -l ) == 0 )); then
     echo "moshSERVER() {
         mosh --ssh=\"ssh -p 22022\" hyssar@govpop.com
     }" >> ~/.bashrc
+    echo "Loaded moshSERVER"
 fi
 
 if (( $( grep "^oclean()" ~/.bashrc | wc -l ) == 0 )); then
     echo "oclean() {
         rm *.cmi *.cmx *.o
     }" >> ~/.bashrc
+    echo "Loaded oclean"
 fi
 
 if (( $( grep "^mtime()" ~/.bashrc | wc -l ) == 0 )); then
@@ -111,6 +113,7 @@ if (( $( grep "^mtime()" ~/.bashrc | wc -l ) == 0 )); then
             \"\$@\"
         done
     }" >> ~/.bashrc
+    echo "Loaded mtime"
 fi
 
 if (( $( grep "^reverseMouse()" ~/.bashrc | wc -l ) == 0 )); then
@@ -122,10 +125,12 @@ if (( $( grep "^reverseMouse()" ~/.bashrc | wc -l ) == 0 )); then
         fi
         xmodmap ~/.Xmodmap
     }" >> ~/.bashrc
+    echo "Loaded reverseMouse"
 fi
 
 if (( $( grep "^psx()" ~/.bashrc | wc -l ) == 0 )); then
     echo "psx() {
         ps aux | grep \$1 | cut -c1-150;
     }" >> ~/.bashrc
+    echo "Loaded psx"
 fi
