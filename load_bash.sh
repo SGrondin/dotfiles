@@ -112,3 +112,20 @@ if (( $( grep "^mtime()" ~/.bashrc | wc -l ) == 0 )); then
         done
     }" >> ~/.bashrc
 fi
+
+if (( $( grep "^reverseMouse()" ~/.bashrc | wc -l ) == 0 )); then
+    echo "reverseMouse() {
+        if (( \$( grep \"1 2 3 5 4 7 6 8 9 10 11 12\" ~/.Xmodmap | wc -l ) == 1 )); then
+            echo \"pointer = 1 2 3 4 5 6 7 8 9 10 11 12\" > ~/.Xmodmap
+        else
+            echo \"pointer = 1 2 3 5 4 7 6 8 9 10 11 12\" > ~/.Xmodmap
+        fi
+        xmodmap ~/.Xmodmap
+    }" >> ~/.bashrc
+fi
+
+if (( $( grep "^psx()" ~/.bashrc | wc -l ) == 0 )); then
+    echo "psx() {
+        ps aux | grep \$1 | cut -c1-150;
+    }" >> ~/.bashrc
+fi
